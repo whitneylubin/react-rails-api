@@ -1,0 +1,2 @@
+  # New controllers should inherit from ApiController, not this controller.
+  protect_from_forgery with: :exception
