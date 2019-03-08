@@ -1,4 +1,4 @@
-[![Ruby Version](https://img.shields.io/badge/ruby-~%3E%202.5-red.svg)]()
+[![Ruby Version](https://img.shields.io/badge/ruby-~%3E%202.5-red.svg)](https://github.com/eonu/react-rails-api/blob/38f50a1d30f33cf7b818a5c939fe5d99c1a758a2/react-rails-api.gemspec#L20)
 [![Gem](https://img.shields.io/gem/v/react-rails-api.svg)](https://rubygems.org/gems/react-rails-api)
 [![License](https://img.shields.io/github/license/eonu/react-rails-api.svg)](https://github.com/eonu/react-rails-api/blob/master/LICENSE)
 
