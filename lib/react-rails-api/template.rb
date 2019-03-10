@@ -10,6 +10,7 @@ puts if database
 gem_group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3', '~> 1.3.6'
+  gem 'foreman', '~> 0.85.0'
 end
 
 gem_group :production do
