@@ -106,9 +106,11 @@ after_bundle do
   inside 'client' do
     # Add a proxy for the Rails API server (on the client)
     inject_into_file 'package.json', "  \"proxy\": \"http://localhost:3001\",\n", after: "\"version\": \"0.1.0\",\n"
+    # Add environment variable for skipping preflight checks (client-level)
+    file '.env', template('.env.tt')
   end
 
-  # Add environment variable for skipping preflight checks
+  # Add environment variable for skipping preflight checks (top-level)
   file '.env', template('.env.tt')
 
   # Prevent out-of-date yarn package errors
