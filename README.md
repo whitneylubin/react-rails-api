@@ -6,14 +6,13 @@
 
 All-in-one application generator enabling the integration of a React front-end and a Ruby-on-Rails API back-end with a CMS via ActiveAdmin.
 
----
-
 <p align="center">
-    <img width="600px" src="https://i.ibb.co/9y3jyBK/react-rails-api.png">
+    <img width="500px" src="https://i.ibb.co/9y3jyBK/react-rails-api.png">
     <p align="center"><em>Image courtesy of <a href="https://heroku.com">Heroku</a>.</em></p>
 </p>
 
-This is an easy-to-use generator to implement the modern web application stack described [here](https://blog.heroku.com/a-rock-solid-modern-web-stack), by Heroku designer Charlie Gleason.
+
+This is an easy-to-use generator to implement the modern web application stack described [here](https://blog.heroku.com/a-rock-solid-modern-web-stack) by Heroku designer Charlie Gleason.
 
 ## Requirements
 
@@ -30,6 +29,8 @@ $ gem install react-rails-api
 
 ## Usage
 
+### Creating an application
+
 ```bash
 $ react-rails
 
@@ -44,6 +45,16 @@ Options:
 
 If the `--database` flag is set to true (which is the default), a prompt will also ask if you'd like to integrate [ActiveAdmin](https://activeadmin.info/) into the application.
 
+### Running an application
+
+There are two `rake` tasks that allow you to run development and production builds of an application (using [Foreman](https://github.com/ddollar/foreman)):
+
+- `start:development` - Starts a development build of the application (running `Procfile.dev`).
+- `start:production` - Starts a production build of the application (running `Procfile`).
+
 ## More information
 
-For more information about how to use this stack, please read [this blog post](https://blog.heroku.com/a-rock-solid-modern-web-stack).
+For more information about how to use this stack, please read the following blog posts by Charlie Gleason:
+
+- https://blog.heroku.com/a-rock-solid-modern-web-stack
+- https://medium.com/superhighfives/a-top-shelf-web-stack-rails-5-api-activeadmin-create-react-app-de5481b7ec0b
