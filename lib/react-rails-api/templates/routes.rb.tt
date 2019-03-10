@@ -1,5 +1,5 @@
 
-  scope '/api' do
+  scope :api do
     # Register your API resources here after scaffolding them e.g.
     # resources :products
     # resources :customers
