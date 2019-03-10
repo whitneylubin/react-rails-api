@@ -4,10 +4,8 @@ require_relative 'version'
 class ReactRailsAPI::CLI < Thor
   TEMPLATE = File.join __dir__, 'template.rb'
 
-  class_option :database, type: :boolean, :desc => "Integrate ActiveRecord (and Postgres).", default: true
-  default_task :new
-
-  desc '[PATH]', "\e[90mInitialise a React/Rails API application.\e[0m"
+  method_option :database, type: :boolean, desc: 'Integrate ActiveRecord (and Postgres).', default: true
+  desc "new [\e[1mPATH\e[0m]", "\e[90mInitialise a React/Rails API application.\e[0m"
   def new(path)
     opts = default_options
     opts << '--database=postgresql' if options[:database]
@@ -17,28 +15,9 @@ class ReactRailsAPI::CLI < Thor
   end
 
   map %w[--version -v] => :version
-  desc 'version, -v', "\e[90mDisplay installed react-rails version.\e[0m"
+  desc '-v', "\e[90mDisplay installed React/Rails API gem version.\e[0m"
   def version
     puts ReactRailsAPI::VERSION
-  end
-
-  def self.help(shell, subcommand = false)
-    list = printable_commands(true, subcommand)
-    Thor::Util.thor_classes_in(self).each do |klass|
-      list += klass.printable_commands(false)
-    end
-    list.sort! { |a, b| a[0] <=> b[0] }
-    list.reject! { |e| /(.*help.*)|(.*version.*)/.match? e.first }
-
-    if defined?(@package_name) && @package_name
-      shell.say "#{@package_name} commands:"
-    else
-      shell.say "Commands:"
-    end
-
-    shell.print_table(list, :indent => 2, :truncate => true)
-    shell.say
-    class_options_help(shell)
   end
 
   no_tasks do

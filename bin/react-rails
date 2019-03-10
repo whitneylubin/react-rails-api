@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
 require 'react-rails-api'
-ReactRailsAPI::CLI.start
+
+if ARGV.empty? || (ARGV.size == 1 && ARGV.first == '-h')
+  ReactRailsAPI::CLI.start %w[-h new]
+else
+  ReactRailsAPI::CLI.start
+end
