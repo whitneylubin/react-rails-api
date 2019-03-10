@@ -29,21 +29,29 @@ $ gem install react-rails-api
 
 ## Usage
 
-### Creating an application
-
 ```bash
-$ react-rails
-
+$ react-rails -h
 Commands:
-  react-rails new [PATH]   # Initialise a React/Rails API application.
-  react-rails version, -v  # Display installed react-rails version.
+  react-rails [PATH]       # Initialise a React/Rails API application.
 
 Options:
   [--database], [--no-database]  # Integrate ActiveRecord (and Postgres).
                                  # Default: true
 ```
 
+### Creating an application
+
+```bash
+$ react-rails my-demo-app
+```
+
 If the `--database` flag is set to true (which is the default), a prompt will also ask if you'd like to integrate [ActiveAdmin](https://activeadmin.info/) into the application.
+
+If you would not like to integrate ActiveRecord (and a Postgres database), make sure to use the `--no-database` flag:
+
+```bash
+$ react-rails my-demo-app --no-database
+```
 
 ### Running an application
 
