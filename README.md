@@ -11,7 +11,6 @@ All-in-one application generator enabling the integration of a React front-end a
     <p align="center"><em>Image courtesy of <a href="https://heroku.com">Heroku</a>.</em></p>
 </p>
 
-
 This is an easy-to-use generator to implement the modern web application stack described [here](https://blog.heroku.com/a-rock-solid-modern-web-stack) by Heroku designer Charlie Gleason.
 
 ## Requirements
@@ -29,21 +28,31 @@ $ gem install react-rails-api
 
 ## Usage
 
-### Creating an application
-
 ```bash
 $ react-rails
-
-Commands:
-  react-rails new [PATH]   # Initialise a React/Rails API application.
-  react-rails version, -v  # Display installed react-rails version.
+Usage:
+  react-rails new [PATH]
 
 Options:
   [--database], [--no-database]  # Integrate ActiveRecord (and Postgres).
                                  # Default: true
+
+Initialise a React/Rails API application.
+```
+
+### Creating an application
+
+```bash
+$ react-rails new demo-app
 ```
 
 If the `--database` flag is set to true (which is the default), a prompt will also ask if you'd like to integrate [ActiveAdmin](https://activeadmin.info/) into the application.
+
+If you would not like to integrate ActiveRecord (and a Postgres database), make sure to use the `--no-database` flag:
+
+```bash
+$ react-rails new demo-app --no-database
+```
 
 ### Running an application
 
