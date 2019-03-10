@@ -30,12 +30,14 @@ $ gem install react-rails-api
 
 ```bash
 $ react-rails
-Commands:
-  react-rails new [PATH]  # Initialise a React/Rails API application.
+Usage:
+  react-rails new [PATH]
 
 Options:
   [--database], [--no-database]  # Integrate ActiveRecord (and Postgres).
                                  # Default: true
+
+Initialise a React/Rails API application.
 ```
 
 ### Creating an application
