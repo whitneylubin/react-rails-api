@@ -98,7 +98,7 @@ after_bundle do
   end
 
   # Create a top-level package.json that tells Heroku how to compile the Create React App
-  file 'package.json', template('package.json.tt')
+  file 'package.json', template('package.json.tt'), force: true
 
   # Create the React application (client)
   run 'yarn create react-app client'
