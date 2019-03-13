@@ -1,3 +1,13 @@
+# 0.1.2
+
+#### Major changes
+
+- Force top-level `package.json` to be overwritten if it already exists. ([#7](https://github.com/eonu/react-rails-api/pull/7))
+
+#### Minor changes
+
+- Remove Charlie Gleason as an author (in Gemspec). ([#8](https://github.com/eonu/react-rails-api/pull/8))
+
 # 0.1.1
 
 #### Major changes
