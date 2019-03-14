@@ -1,3 +1,16 @@
+# 0.1.3
+
+#### Major changes
+
+- Stop spring before ActiveAdmin install to prevent an asset generation error. ([#11](https://github.com/eonu/react-rails-api/pull/11))
+- Change **Yarn** version specifier to `^1.13`. ([#11](https://github.com/eonu/react-rails-api/pull/11))
+- Change **Node** version specifier to `^11`. ([#11](https://github.com/eonu/react-rails-api/pull/11))
+
+#### Minor changes
+
+- Move **Yarn** and **Node** engine version specifiers to `version.rb`. ([#11](https://github.com/eonu/react-rails-api/pull/11))
+- Add `modify_json` method for modifying JSON files (to prevent the overwriting of `package.json`). ([#11](https://github.com/eonu/react-rails-api/pull/11))
+
 # 0.1.2
 
 #### Major changes
