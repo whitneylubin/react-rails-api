@@ -1,6 +1,16 @@
+require 'react-rails-api/version'
+require 'json'
+
 # Loads a template from ./templates
 def template(name)
   File.open(File.join __dir__, 'templates', name).read
+end
+
+# Allows for modification of JSON files
+def modify_json(file)
+  hash = JSON.parse File.read(file), symbolize_names: true
+  yield hash if block_given?
+  File.open(file, ?w) {|f| f.write JSON.pretty_generate(hash)}
 end
 
 database = !ARGV.include?('--skip-active-record')
@@ -61,7 +71,7 @@ after_bundle do
 
   inside 'config' do
     # Include the railtie for sprockets
-    uncomment_lines 'application.rb', /require \"sprockets\/railtie\"/
+    uncomment_lines 'application.rb', "require \"sprockets/railtie\""
 
     # Add ActiveAdmin configuration on config/application.rb
     inject_into_file 'application.rb', template('application.rb.tt'), before: /^  end/ if active_admin
@@ -74,10 +84,12 @@ after_bundle do
   end
 
   if database
+    rails_command 'db:create'
+
     if active_admin
       # Integrate ActiveAdmin and Devise CMS into the application
+      run 'spring stop'
       generate 'active_admin:install'
-      generate 'devise:views'
     end
 
     # Run a database migration and seed the database
@@ -98,14 +110,26 @@ after_bundle do
   end
 
   # Create a top-level package.json that tells Heroku how to compile the Create React App
-  file 'package.json', template('package.json.tt'), force: true
+  modify_json 'package.json' do |json|
+    json[:name] = 'api'
+    json[:license] = 'MIT'
+    json[:engines] = {
+      node: ReactRailsAPI::ENGINE_VERSIONS[:node],
+      yarn: ReactRailsAPI::ENGINE_VERSIONS[:yarn]
+    }
+    json[:scripts] = {
+      build: "yarn --cwd client install && yarn --cwd client build",
+      deploy: "cp -a client/build/. public/",
+      postinstall: "yarn build && yarn deploy"
+    }
+  end
 
   # Create the React application (client)
   run 'yarn create react-app client'
 
   inside 'client' do
     # Add a proxy for the Rails API server (on the client)
-    inject_into_file 'package.json', "  \"proxy\": \"http://localhost:3001\",\n", after: "\"version\": \"0.1.0\",\n"
+    modify_json('package.json') {|json| json[:proxy] = 'http://localhost:3001'}
     # Add environment variable for skipping preflight checks (client-level)
     file '.env', template('.env.tt')
   end
