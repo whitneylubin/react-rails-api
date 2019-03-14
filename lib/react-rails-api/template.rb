@@ -74,10 +74,12 @@ after_bundle do
   end
 
   if database
+    rails_command 'db:create'
+
     if active_admin
       # Integrate ActiveAdmin and Devise CMS into the application
+      run 'spring stop'
       generate 'active_admin:install'
-      generate 'devise:views'
     end
 
     # Run a database migration and seed the database
