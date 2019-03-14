@@ -17,8 +17,8 @@ This is an easy-to-use generator to implement the modern web application stack d
 
 - [**Ruby**](https://www.ruby-lang.org/en/) `~> 2.5`
 - [**Rails**](https://rubyonrails.org/) `~> 5.2`
-- [**Node**](https://nodejs.org/en/) `11.11.0`: *Recommend installing this with [NVM](https://github.com/creationix/nvm).*
-- [**Yarn**](https://yarnpkg.com/en/) `1.13.0`: *Recommend installing Node separately from this, rather than as a dependency.*
+- [**Node**](https://nodejs.org/en/) `^11`: *Recommend installing this with [NVM](https://github.com/creationix/nvm).*
+- [**Yarn**](https://yarnpkg.com/en/) `^1.13`: *Recommend installing Node separately from this, rather than as a dependency.*
 
 ## Installation
 

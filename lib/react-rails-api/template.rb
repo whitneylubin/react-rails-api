@@ -1,4 +1,17 @@
-require_relative 'helpers'
+require 'react-rails-api/version'
+require 'json'
+
+# Loads a template from ./templates
+def template(name)
+  File.open(File.join __dir__, 'templates', name).read
+end
+
+# Allows for modification of JSON files
+def modify_json(file)
+  hash = JSON.parse File.read(file), symbolize_names: true
+  yield hash if block_given?
+  File.open(file, ?w) {|f| f.write JSON.pretty_generate(hash)}
+end
 
 database = !ARGV.include?('--skip-active-record')
 active_admin = database ? yes?("\nUse ActiveAdmin? (Y/n):") : false
@@ -101,8 +114,8 @@ after_bundle do
     json[:name] = 'api'
     json[:license] = 'MIT'
     json[:engines] = {
-      node: '11.11.0',
-      yarn: '1.13.0'
+      node: ReactRailsAPI::ENGINE_VERSIONS[:node],
+      yarn: ReactRailsAPI::ENGINE_VERSIONS[:yarn]
     }
     json[:scripts] = {
       build: "yarn --cwd client install && yarn --cwd client build",
@@ -116,7 +129,7 @@ after_bundle do
 
   inside 'client' do
     # Add a proxy for the Rails API server (on the client)
-    modify_json 'package.json' {|json| json[:proxy] = 'http://localhost:3001'}
+    modify_json('package.json') {|json| json[:proxy] = 'http://localhost:3001'}
     # Add environment variable for skipping preflight checks (client-level)
     file '.env', template('.env.tt')
   end
