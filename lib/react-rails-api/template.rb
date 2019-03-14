@@ -1,3 +1,5 @@
+require_relative 'helpers'
+
 database = !ARGV.include?('--skip-active-record')
 active_admin = database ? yes?("\nUse ActiveAdmin? (Y/n):") : false
 puts if database
