@@ -128,8 +128,12 @@ after_bundle do
   run 'yarn create react-app client'
 
   inside 'client' do
-    # Add a proxy for the Rails API server (on the client)
-    modify_json('package.json') {|json| json[:proxy] = 'http://localhost:3001'}
+    modify_json 'package.json' do |json|
+      # Add a MIT license
+      json[:license] = 'MIT'
+      # Add a proxy for the Rails API server (on the client)
+      json[:proxy] = 'http://localhost:3001'
+    end
     # Add environment variable for skipping preflight checks (client-level)
     file '.env', template('.env.tt')
   end
