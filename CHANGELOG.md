@@ -1,3 +1,14 @@
+# 0.1.4
+
+#### Major changes
+
+- Add MIT license to the client-level `package.json`. ([#13](https://github.com/eonu/react-rails-api/pull/13))
+- Change `npm run postinstall` to `yarn postinstall` in `start` rake task. ([#14](https://github.com/eonu/react-rails-api/pull/14))
+
+#### Minor changes
+
+- Use idiomatic hash notation in `start.rake.tt`. ([#15](https://github.com/eonu/react-rails-api/pull/15/))
+
 # 0.1.3
 
 #### Major changes

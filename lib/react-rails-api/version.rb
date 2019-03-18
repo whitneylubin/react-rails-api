@@ -2,7 +2,7 @@ module ReactRailsAPI
   VERSION = {
     major: 0,
     minor: 1,
-    patch: 3,
+    patch: 4,
     meta: nil
   }.values.reject(&:nil?).map(&:to_s)*?.
 
