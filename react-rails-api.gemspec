@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'react-rails-api'
   spec.version       = ReactRailsAPI::VERSION
   spec.authors       = ['Edwin Onuonga']
-  spec.email         = ['edwinonuonga@gmail.com']
+  spec.email         = ['ed@eonu.net']
   spec.license       = 'MIT'
 
   spec.summary       = %q{All-in-one application generator enabling the integration of a React front-end and a Ruby-on-Rails API back-end with ActiveAdmin CMS.}
