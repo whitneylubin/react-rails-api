@@ -120,7 +120,7 @@ after_bundle do
     json[:scripts] = {
       build: "yarn --cwd client install && yarn --cwd client build",
       deploy: "cp -a client/build/. public/",
-      postinstall: "yarn global add serve && yarn build && yarn deploy"
+      postinstall: "yarn build && yarn deploy"
     }
   end
 
