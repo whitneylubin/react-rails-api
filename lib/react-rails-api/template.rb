@@ -102,7 +102,7 @@ after_bundle do
 
   # Create a production Procfile for running the application
   file 'Procfile', template('Procfile.tt')
-  inject_into_file 'Procfile', "# release: bundle exec rake db:migrate\n", after: /\A/ if database
+  inject_into_file 'Procfile', "release: bundle exec rake db:migrate\n", after: "\n" if database
 
   # Create a rake task for starting the application in the development environment
   inside File.join('lib', 'tasks') do

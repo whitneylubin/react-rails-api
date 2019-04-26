@@ -1,2 +1,2 @@
 web: PORT=3000 yarn --cwd client start
-api: PORT=3001 bundle exec rails s -p $PORT -e $RAILS_ENV
+api: PORT=3001 RAILS_ENV=development bundle exec rails s -p $PORT -e $RAILS_ENV
