@@ -102,7 +102,7 @@ after_bundle do
 
   # Create a production Procfile for running the application
   file 'Procfile', template('Procfile.tt')
-  inject_into_file 'Procfile', 'release: bundle exec rake db:migrate', after: "\n" if database
+  inject_into_file 'Procfile', "# release: bundle exec rake db:migrate\n", after: /\A/ if database
 
   # Create a rake task for starting the application in the development environment
   inside File.join('lib', 'tasks') do
@@ -120,7 +120,7 @@ after_bundle do
     json[:scripts] = {
       build: "yarn --cwd client install && yarn --cwd client build",
       deploy: "cp -a client/build/. public/",
-      postinstall: "yarn build && yarn deploy"
+      postinstall: "yarn global add serve && yarn build && yarn deploy"
     }
   end
 
