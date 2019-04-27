@@ -1,1 +1,1 @@
-web: PORT=3001 RAILS_ENV=production bundle exec rails s -p $PORT -e $RAILS_ENV
+web: bundle exec rails s
