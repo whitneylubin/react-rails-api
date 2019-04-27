@@ -8,5 +8,5 @@
     # Use regular scaffolding process
     config.app_generators.scaffold_controller = :scaffold_controller
 
-    # This tells the precompile task to run without invoking Rails
+    # Run the precompile task without invoking Rails
     config.assets.initialize_on_precompile = false
