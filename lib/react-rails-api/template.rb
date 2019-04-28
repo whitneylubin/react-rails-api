@@ -35,11 +35,6 @@ if active_admin
   inject_into_file 'Gemfile', "# ActiveAdmin\n", before: "gem 'devise'"
 end
 
-# HACK: Force 'yarn install' before asset precompilation. See:
-#   https://github.com/heroku/heroku-buildpack-ruby/issues/591
-#   https://github.com/rails/webpacker/issues/1282
-inject_into_file 'Gemfile', ', require: false', after: "gem 'webpacker'"
-
 after_bundle do
   # Stop spring from running
   run 'spring stop'
