@@ -28,6 +28,7 @@ class ReactRailsAPI::CLI < Thor
         --skip-coffee
         --skip-action-cable
         --skip-action-mailer
+        --skip-active-storage
         --skip-turbolinks
         --skip-test
         --skip-bootsnap
