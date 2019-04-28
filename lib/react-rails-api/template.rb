@@ -81,6 +81,10 @@ after_bundle do
 
     # Add /api scope in config/routes.rb
     inject_into_file 'routes.rb', template('routes.rb.tt'), before: /^end/
+
+    inside 'environments' do
+      inject_into_file 'production.rb', template('production.rb.tt'), before: /^end/
+    end
   end
 
   if database
