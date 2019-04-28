@@ -1,3 +1,7 @@
+# 0.2.0
+
+- Improve the production environment.
+
 # 0.1.4
 
 #### Major changes
