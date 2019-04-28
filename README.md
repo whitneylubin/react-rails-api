@@ -61,6 +61,21 @@ There are two `rake` tasks that allow you to run development and production buil
 - `start:development` - Starts a development build of the application (running `Procfile.dev`).
 - `start:production` - Starts a production build of the application (running `Procfile`).
 
+### Troubleshooting and common errors
+
+- **Error when precompiling assets on Heroku** (`failed to load command: webpack`)
+
+  This is often as a result of the auto-detected Ruby and Node.js buildpacks being ran in the wrong order.
+
+  This can be fixed by running the following commands in the application's directory:
+
+  ```bash
+  $ heroku buildpacks:add heroku/nodejs -i 1
+  $ heroku buildpacks:add heroku/ruby -i 2
+  ```
+
+  This ensures that `webpack` is installed before trying to precompile the assets.
+
 ## More information
 
 For more information about how to use this stack, please read the following blog posts by Charlie Gleason:

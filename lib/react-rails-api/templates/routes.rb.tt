@@ -4,3 +4,8 @@
     # resources :products
     # resources :customers
   end
+
+  # Pass server routes that don't match to the client's index.html
+  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+    !request.xhr? && request.format.html?
+  end
