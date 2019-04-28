@@ -87,6 +87,9 @@ after_bundle do
     end
   end
 
+  # Add /public/assets to .gitignore
+  inject_into_file '.gitignore', template('.gitignore.tt'), after: /^\/public\/packs-test/
+
   if database
     rails_command 'db:create'
 
